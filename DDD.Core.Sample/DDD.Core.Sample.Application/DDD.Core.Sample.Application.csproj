@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.Core.Sample.Application.Interfaces\DDD.Core.Sample.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\DDD.Core.Sample.Domain.Repository.Interfaces\DDD.Core.Sample.Domain.Repository.Interfaces.csproj" />
+    <ProjectReference Include="..\DDD.Core.Sample.Repository\DDD.Core.Sample.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
