@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using DDD.Core.Sample.WebApi.Models.StartViewModels;
 using DDD.Core.Sample.WebApi.ResultModels;
@@ -34,12 +35,27 @@ namespace DDD.Core.Sample.WebApi.Controllers
         {
             MessageBase result = new MessageBase();
             // discover endpoints from metadata
-            var disco = await DiscoveryClient.GetAsync("AuthorityUrl");
-            // request token
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "pwd_client", clientSecret: "pwd_secret");
-            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync("", "123", "api1 offline_access");
-            var json = tokenResponse.Json;
+            var client = new HttpClient();
+            var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
+            {
+                Address = "https://demo.identityserver.io/connect/token",
 
+                ClientId = "pwd_client",
+                ClientSecret = "pwd_secret",
+                Scope = "api1 offline_access",
+
+                UserName = "bob",
+                Password = "123"
+            });
+            var json = tokenResponse.Json;
+            ////序列化返回的对象
+            //var response = new MemberLoginResultModel
+            //{
+            //    AccessToken = json["access_token"].ToString(),
+            //    RefreshToken = json["refresh_token"].ToString(),
+            //    ExpiresIn = json["expires_in"].ToInt32()
+            //};
+            //result.Data = response;
             return result;
         }
         /// <summary>
@@ -53,12 +69,16 @@ namespace DDD.Core.Sample.WebApi.Controllers
         public async Task<object> RefreshToken(string refreshToken)
         {
             MessageBase result = new MessageBase();
+            var client = new HttpClient();
+            var tokenResponse = await client.RequestRefreshTokenAsync(new RefreshTokenRequest
+            {
+                Address = "https://demo.identityserver.io/connect/token",
 
-            // discover endpoints from metadata
-            var disco = await DiscoveryClient.GetAsync("AuthorityUrl");
-            // request token
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "pwd_client", clientSecret: "pwd_secret");
-            var tokenResponse = await tokenClient.RequestRefreshTokenAsync(refreshToken);
+                ClientId = "pwd_client",
+                ClientSecret = "pwd_secret",
+
+                RefreshToken = refreshToken
+            });
 
             var json = tokenResponse.Json;
 

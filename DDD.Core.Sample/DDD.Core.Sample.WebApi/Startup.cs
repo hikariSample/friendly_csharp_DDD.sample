@@ -49,7 +49,7 @@ namespace DDD.Core.Sample.WebApi
             {
                 options.AddPolicy("AllowSpecificOrigin", builder =>
                 {
-                    builder.AllowAnyOrigin()//.WithOrigins(Configuration["OtherConfig:Cors"].Split(',', StringSplitOptions.RemoveEmptyEntries))
+                    builder.WithOrigins(Configuration["OtherConfig:Cors"].Split(',', StringSplitOptions.RemoveEmptyEntries))
                         .AllowAnyHeader().WithHeaders(HeaderNames.Authorization, HeaderNames.ContentType, HeaderNames.Accept, HeaderNames.Origin)
                         .AllowAnyMethod().WithMethods("PATCH").WithMethods("DELETE")
                         .AllowCredentials();
@@ -69,7 +69,7 @@ namespace DDD.Core.Sample.WebApi
                     options.ApiSecret = "pwd_secret";
                 });
 
-            services.AddMvc(options =>
+            services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(ModelStateValidationAttribute));
                 options.Filters.Add(typeof(ExceptionAttribute));
@@ -99,12 +99,14 @@ namespace DDD.Core.Sample.WebApi
 
             app.UseHttpsRedirection();
 
-            app.UseRouting(routes =>
-            {
-                routes.MapControllers();
-            });
+            app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

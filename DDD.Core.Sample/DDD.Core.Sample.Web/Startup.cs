@@ -40,14 +40,14 @@ namespace DDD.Core.Sample.Web
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
             {
-                options.LoginPath = new PathString("/PlatformMember/Login");
-                options.AccessDeniedPath = new PathString("/PlatformMember/AccessDenied");
+                options.LoginPath = new PathString("/Start/Login");
+                options.AccessDeniedPath = new PathString("/Start/AccessDenied");
             });
 
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false;
+                options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -93,8 +93,8 @@ namespace DDD.Core.Sample.Web
             });
 
             app.UseCookiePolicy();
-
-            app.UseAuthorization();
+            app.UseAuthentication();
+            //app.UseAuthorization();
         }
     }
 }

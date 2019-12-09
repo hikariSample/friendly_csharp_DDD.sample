@@ -1,0 +1,37 @@
+﻿@model DDD.Core.Sample.Web.Models.StartViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name">H+</h1>
+
+        </div>
+        <h3>欢迎使用 H+</h3>
+
+        <form class="m-t" role="form" asp-action="Login" asp-controller="Start" method="post" autocomplete="off" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <input class="form-control" placeholder="用户名" required="" asp-for="UserName">
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div class="form-group">
+                <input class="form-control" placeholder="密码" required="" asp-for="Password">
+                <span asp-validation-for="Password"></span>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+
+
+            <p class="text-muted text-center">
+                <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+

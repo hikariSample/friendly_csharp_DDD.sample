@@ -1,4 +1,5 @@
 ﻿using System;
+using System.NetCore.Extensions.EntityFrameworkCore;
 using DDD.Core.Sample.Application;
 using DDD.Core.Sample.Infrastructure;
 using DDD.Core.Sample.Infrastructure.Interfaces;
@@ -23,7 +24,7 @@ namespace DDD.Core.Sample.BootStrapper  //引导程序
 
         public static void AddConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddEntityFrameworkSqlServer().AddDbContextPool<SchoolDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Default"), b => b.UseRowNumberForPaging())); //数据库连接注入
+            services.AddEntityFrameworkSqlServer().AddDbContextPool<SchoolDbContext>(options => options.SetOptionsBuilder(configuration.GetConnectionString("Default"), "SqlServer", nameof(DDD.Core.Sample.Domain))); //数据库连接注入
             services.AddTransient(typeof(IDbContext), typeof(SchoolDbContext));
             services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.Scan(selector => selector.FromAssembliesOf(typeof(BaseRepository<>)).AddClasses().AsImplementedInterfaces().WithScopedLifetime()); //注入所有业务
@@ -35,7 +36,7 @@ namespace DDD.Core.Sample.BootStrapper  //引导程序
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);//这是为了防止中文乱码
             loggerFactory.AddNLog();//添加NLog
-            NLog.LogManager.LoadConfiguration("nlog.config");  //读取Nlog配置文件
+            NLog.Web.NLogBuilder.ConfigureNLog(System.IO.Path.Combine(System.Environment.CurrentDirectory, "nlog.config"));//读取Nlog配置文件  //读取Nlog配置文件
         }
 
         private static void ConfigureMapper()

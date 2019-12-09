@@ -16,3 +16,50 @@
             integrity="sha256-9GycpJnliUjJDVDqP0UEu/bsm9U+3dnQUH8+3W10vkY=">
     </script>
 </environment>
+<script>
+    function ajaxAntiForgery(url, params, id) {
+        layx.destroy(id);
+        layx.load('loadId', '数据正在提交中，请稍后');
+        //获取防伪标记
+        var token = $('@Html.AntiForgeryToken()').val();
+        //params["__RequestVerificationToken"] = token;
+        $.ajax({
+            type: "POST",
+            data: params,
+            cache: false,
+            async: false,
+            url: url,
+            headers:
+            {
+                "RequestVerificationToken": token//$('#RequestVerificationToken').val()
+            },
+            success: function (msg) {
+                layx.destroy('loadId');
+                if (msg.success == true) {
+                    layx.msg("操作成功", { dialogIcon: 'success' });
+
+                    var form = $('form.ajaxTable');
+                    if (form.length > 0) {
+                        $('#table').bootstrapTable('refresh');
+                    } else {
+                        if (layx.getWindow('taobaosite') == undefined) {
+                            window.location.reload();
+                        } else {
+                            window.location.reload();
+                        }
+                    }
+                    layx.destroy('taobaosite');
+                } else if (msg.success == false) {
+                    layx.msg('操作失败!,提示：' + msg.errorMsg, { dialogIcon: 'error' });
+                    console.error(msg.errorMsg);
+                }
+
+            },
+            error: function (msg) {
+                layx.msg('服务器错误', { dialogIcon: 'error' });
+                layx.destroy('loadId');
+                console.error(msg.errorMsg);
+            }
+        });
+    }
+</script>
