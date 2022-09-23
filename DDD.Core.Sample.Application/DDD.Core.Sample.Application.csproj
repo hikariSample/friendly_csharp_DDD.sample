@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net7.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Linq.Async.Queryable" Version="6.0.1" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.Core.Sample.Application.Interfaces\DDD.Core.Sample.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\DDD.Core.Sample.Domain.Repository.Interfaces\DDD.Core.Sample.Domain.Repository.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
