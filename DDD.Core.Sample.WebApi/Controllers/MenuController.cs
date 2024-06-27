@@ -1,4 +1,5 @@
-﻿using DDD.Core.Sample.Application.DTO;
+﻿using Asp.Versioning;
+using DDD.Core.Sample.Application.DTO;
 using DDD.Core.Sample.Application.Interfaces;
 using DDD.Core.Sample.WebApi.Models.MenuViewModels;
 using DDD.Core.Sample.WebApi.ResultModels;

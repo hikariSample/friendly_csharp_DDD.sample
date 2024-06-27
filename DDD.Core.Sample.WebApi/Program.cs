@@ -6,6 +6,7 @@ using Microsoft.Net.Http.Headers;
 using NLog.Web;
 using System.Net;
 using System.Text;
+using Asp.Versioning.ApiExplorer;
 using DDD.Core.Sample.WebApi.ResultModels;
 using Hikari.Common.Web.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
