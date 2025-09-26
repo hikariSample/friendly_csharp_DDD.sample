@@ -150,7 +150,7 @@ namespace DDD.Core.Sample.WebApi.Controllers
             var dic = new Dictionary<long, MenuResultModel>(menuList.Count);
             foreach (var chapter in menuList)
             {
-                dic.Add(chapter.Id, ConvertHelper.ChangeType<MenuResultModel>(chapter));
+                dic.Add(chapter.Id, chapter.ChangeTypeTo<MenuResultModel>());
             }
             foreach (var chapter in dic.Values)
             {

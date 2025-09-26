@@ -1,15 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFramework>net9.0</TargetFramework>
+	  <TargetFramework>net10.0</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
 	  <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Hikari.Common.EfCore" Version="6.0.2.3" />
-	  <PackageReference Include="Scrutor" Version="4.2.2" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.11" />
+	  <PackageReference Include="Scrutor" Version="6.1.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>

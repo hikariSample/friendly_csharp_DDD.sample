@@ -1,0 +1,29 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/1-Presentation/">
+    <Project Path="DDD.Core.Sample.AuthServer/DDD.Core.Sample.AuthServer.csproj" />
+    <Project Path="DDD.Core.Sample.Web/DDD.Core.Sample.Web.csproj" />
+    <Project Path="DDD.Core.Sample.WebApi/DDD.Core.Sample.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/src/2-Application/">
+    <Project Path="DDD.Core.Sample.Application.DTO/DDD.Core.Sample.Application.DTO.csproj" />
+    <Project Path="DDD.Core.Sample.Application.Interfaces/DDD.Core.Sample.Application.Interfaces.csproj" />
+    <Project Path="DDD.Core.Sample.Application/DDD.Core.Sample.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/3-Domain/">
+    <Project Path="DDD.Core.Sample.Domain.DomainEvents/DDD.Core.Sample.Domain.DomainEvents.csproj" />
+    <Project Path="DDD.Core.Sample.Domain.DomainServices/DDD.Core.Sample.Domain.DomainServices.csproj" />
+    <Project Path="DDD.Core.Sample.Domain.Repository.Interfaces/DDD.Core.Sample.Domain.Repository.Interfaces.csproj" />
+    <Project Path="DDD.Core.Sample.Domain.ValueObjects/DDD.Core.Sample.Domain.ValueObjects.csproj" />
+    <Project Path="DDD.Core.Sample.Domain/DDD.Core.Sample.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/4-Infrastructure/">
+    <Project Path="DDD.Core.Sample.BootStrapper/DDD.Core.Sample.BootStrapper.csproj" />
+    <Project Path="DDD.Core.Sample.Infrastructure.Interfaces/DDD.Core.Sample.Infrastructure.Interfaces.csproj" />
+    <Project Path="DDD.Core.Sample.Infrastructure/DDD.Core.Sample.Infrastructure.csproj" />
+    <Project Path="DDD.Core.Sample.Repository/DDD.Core.Sample.Repository.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="XUnitTestProject1/XUnitTestProject1.csproj" />
+  </Folder>
+</Solution>

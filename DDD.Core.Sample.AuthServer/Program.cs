@@ -1,5 +1,5 @@
 using DDD.Core.Sample.AuthServer.Configuration;
-using IdentityServer4;
+using Duende.IdentityServer;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 

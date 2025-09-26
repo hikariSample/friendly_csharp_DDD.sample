@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Asp.Versioning.ApiExplorer;
+using DDD.Core.Sample.WebApi.ResultModels;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -6,10 +7,9 @@ using Microsoft.Net.Http.Headers;
 using NLog.Web;
 using System.Net;
 using System.Text;
-using Asp.Versioning.ApiExplorer;
-using DDD.Core.Sample.WebApi.ResultModels;
-using Hikari.Common.Web.AspNetCore.Swagger;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Hikari.Common.Web.AspNetCore.OpenApi;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 //builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
@@ -110,7 +110,7 @@ builder.Services.AddControllers().AddControllersAsServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
-services.AddSwaggerCustom();
+services.AddOpenApiCustom();
 
 var app = builder.Build();
 
@@ -120,7 +120,8 @@ IApiVersionDescriptionProvider provider = app.Services.GetService<IApiVersionDes
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseSwaggerCustom(provider);
+    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 app.UseExceptionHandler(applicationBuilder => applicationBuilder.Run(async context =>
 {

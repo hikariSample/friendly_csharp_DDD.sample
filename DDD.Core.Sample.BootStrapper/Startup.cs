@@ -3,7 +3,7 @@ using DDD.Core.Sample.Domain;
 using DDD.Core.Sample.Infrastructure;
 using DDD.Core.Sample.Infrastructure.Interfaces;
 using DDD.Core.Sample.Repository;
-using Hikari.Common.EfCore.EntityFrameworkCore;
+using Hikari.Common.EntityFrameworkCore.DatabaseProvider;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

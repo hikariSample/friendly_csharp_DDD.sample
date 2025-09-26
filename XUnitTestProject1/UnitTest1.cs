@@ -1,10 +1,7 @@
-using System;
 using DDD.Core.Sample.Application;
 using DDD.Core.Sample.Application.Interfaces;
 using DDD.Core.Sample.Domain.Repository.Interfaces;
-using DDD.Core.Sample.Infrastructure;
 using DDD.Core.Sample.Infrastructure.Interfaces;
-using DDD.Core.Sample.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;

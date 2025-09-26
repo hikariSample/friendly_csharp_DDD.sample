@@ -1,16 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using DDD.Core.Sample.WebApi.Models.StartViewModels;
-using DDD.Core.Sample.WebApi.ResultModels;
-using Hikari.Common;
-using Hikari.Common.Web.AspNetCore.Swagger.Filter;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-
-namespace DDD.Core.Sample.WebApi.Controllers
+﻿namespace DDD.Core.Sample.WebApi.Controllers
 {
     ///// <summary>
     ///// 启动控制器
